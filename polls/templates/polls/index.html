@@ -1,9 +1,21 @@
-{% if latest_poll_list %}
-	<ul>
-		{% for poll in latest_poll_list %}
-			<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
-		{% endfor %}
-	</ul>
-{% else %}
-	<p>No polls are available.</p>
-{% endif %}
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+
+<body>
+	{% if latest_poll_list %}
+		<ul>
+			{% for poll in latest_poll_list %}
+				<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No polls are available.</p>
+	{% endif %}
+</body>
